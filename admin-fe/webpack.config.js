@@ -42,7 +42,7 @@ module.exports = {
           {
             test:/\.hbs$/i,
             use:[{
-              loader:'handerbars-loader'
+              loader:'handlebars-loader'
             }]
           }
         ]
