@@ -13,9 +13,9 @@ module.exports = {
         path:path.resolve(__dirname,'./dev')
     },
     //配置webserver,webpack自带,不需要另外下载
-    devServer: {
-        contentBase:path.join(__dirname,'./dev'),
-        compress:true,
+    devServer: {     //提供简单的服务器，并且能够实现重新加载
+        contentBase:path.join(__dirname,'./dev'),    //把哪里的内容提供给服务器用
+        compress:true,   //对代码进行压缩
         port:9000
     },
 
