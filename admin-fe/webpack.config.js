@@ -16,7 +16,12 @@ module.exports = {
     devServer: {     //提供简单的服务器，并且能够实现重新加载
         contentBase:path.join(__dirname,'./dev'),    //把哪里的内容提供给服务器用
         compress:true,   //对代码进行压缩
-        port:9000
+        port:9000,
+        proxy: {
+          "/api": {
+            target: "http://localhost:3000"
+          }
+        }
     },
 
     //配置loader,loader让webpack能够去处理那些非javaScript文件，常被用于转换某些类型的模块
