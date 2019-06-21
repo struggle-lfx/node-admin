@@ -28,9 +28,13 @@ class UserModule{
      //数据存储
      _save(data){
         //实例化module，并且传入需要插入的数据
-        const user = new this.userModule(data);
+        let user = new this.userModule(data);
         //执行插入操作
         return user.save()   //返回一个promise
+    }
+    _find(data){
+        return this.userModule.findOne({username:data.username})
+
     }
 }
 
