@@ -54,16 +54,19 @@
     <!-- Menu Footer-->
     <li class="user-footer">
         {{#if isSignin}}
-        <div class="pull-left">
-            <a href="#" class="btn btn-primary btn-flat" id="reset">注销</a>
+        <div class="pull-left" id="reset">
+            <a href="#" class="btn btn-primary btn-flat" >注销</a>
+        </div>
+        <div class="pull-right">
+            <a href="#" class="btn btn-default btn-flat">取消</a>
         </div>
         {{else}}
         <div class="pull-left">
                 <a href="#" class="btn btn-primary btn-flat" id="confirm">确定</a>
-            </div>
-            {{/if}}
+            </div>          
         <div class="pull-right">
-            <a href="#" class="btn btn-default btn-flat">退出</a>
+            <a href="#" class="btn btn-default btn-flat">取消</a>
         </div>
+        {{/if}}
     </li>
 </ul>
