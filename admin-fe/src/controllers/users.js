@@ -25,8 +25,7 @@ class Users{
                 $('.box-title').html("登录")
                 that._signin()
             } else {
-                $('.box-title').html("注册")
-                
+                $('.box-title').html("注册")                
                 that._signup()
             }
     
@@ -48,7 +47,7 @@ class Users{
             })
         })
     }
-//登录
+    //登录
     _signin(){
         $('#confirm').on('click', async ()=>{
             $.ajax({

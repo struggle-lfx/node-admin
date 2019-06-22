@@ -27,7 +27,7 @@ class UserController {
         res.set('Content-Type', 'application/json;charset=utf-8');//设置响应格式
         let user = await userModule._find(req.body)
         if(user){
-            res.render('fail', {    //使用ejs模板，render方法回自动去找目录
+            res.render('succ', {    //使用ejs模板，render方法回自动去找目录
                 data: JSON.stringify({
                     message: '用户名已存在' 
                 })
@@ -44,7 +44,7 @@ class UserController {
             })
         }
         else {
-            res.render('fail', {    //使用ejs模板，render方法回自动去找目录
+            res.render('scuu', {    //使用ejs模板，render方法回自动去找目录
                 data: JSON.stringify({
                     message: '数据插入失败'
                 })
@@ -60,8 +60,7 @@ class UserController {
         let result = await userModule._find(req.body)
         if (result) {
             if (await userController.comparePassword(req.body.password, result['password'])) {
-                //创建session,保存用户名  往前端中cookie
-                
+                //创建session,保存用户名  往前端中cookie               
                 req.session.username = result['username'];
                 console.log(req.session)
                 res.render('succ', {    //使用ejs模板，render方法回自动去找目录
