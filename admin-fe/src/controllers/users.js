@@ -24,8 +24,6 @@ class Users {
                 })
                 $('.user-menu').html(str)
             },
-
-
         })
     }
 
@@ -105,8 +103,6 @@ class Users {
         }
 
     }
-
-
 }
 
 
