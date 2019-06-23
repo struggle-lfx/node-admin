@@ -87,7 +87,7 @@ class UserController {
         }
     }
 
-
+    //判断是否登录
     issignin(req,res,next){
         res.set('Content-Type', 'application/json;charset=utf-8');//设置响应格式
         if(req.session.username){
@@ -106,6 +106,8 @@ class UserController {
             })
         }
     }
+
+    //注销
     signout(req,res,next){
         req.session = null
         res.render('succ', {    //使用ejs模板，render方法回自动去找目录

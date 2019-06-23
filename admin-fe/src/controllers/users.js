@@ -8,11 +8,11 @@ class Users {
 
     _renderUser({ isSignin = false, username = '' }) {
         let template = Handlebars.compile(userTpl);
-        let str = template({
-            isSignin,
-            username
-        })
-        $('.user-menu').html(str)
+                let str = template({
+                    isSignin,
+                    username
+                })
+                $('.user-menu').html(str)
 
         $.ajax({
             url: '/api/users/issignin',
@@ -23,18 +23,9 @@ class Users {
                     username: result.data.username
                 })
                 $('.user-menu').html(str)
+            },
 
-            }
 
-        })
-        $('#reset').on('click', () => {
-            console.log(0)
-            $.ajax({
-                url: '/api/users/signout',
-                success(result) {
-                    location.reload()
-                }
-            })
         })
     }
 
@@ -42,7 +33,15 @@ class Users {
     //给user添加点击事件
     _user() {
         let that = this
-        this._renderUser({})
+        $('.user-menu').on('click','#reset',()=>{
+            $.ajax({
+                url:'/api/users/signout',
+                success:()=>{
+                    location.reload()
+                }
+            })
+        })
+
         $('#user').on('click','#reset' ,() => {
             console.log(0)
             $.ajax({
