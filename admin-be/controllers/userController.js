@@ -1,6 +1,9 @@
 const userModule = require('../modules/userModule')
 const bcrypt = require('bcrypt')
 const bcryptjs = require('bcryptjs')
+const fs = require('fs')
+const jwt = require('jsonwebtoken')
+const path = require('path')
 
 class UserController {
 
@@ -20,6 +23,14 @@ class UserController {
     //比对密码
     comparePassword(pwd, hash) {
         return bcryptjs.compare(pwd, hash)
+    }
+
+    genTocken(username){
+        var privatekey = fs.readFileSync(path.resolve(__dirname,'../keys/private.key') )
+        var token = jwt.sign({username},privatekey,{ algorithm: 'RS256'})
+        return token
+        // let cert = 'i love you'
+        // return jwt.sign({username},cert)
     }
 
     //用户注册
@@ -61,8 +72,9 @@ class UserController {
         if (result) {
             if (await userController.comparePassword(req.body.password, result['password'])) {
                 //创建session,保存用户名  往前端中cookie               
-                req.session.username = result['username'];
-                console.log(req.session)
+                //req.session.username = result['username'];
+                //生成token，放在header里
+               res.header('X-Access-Token',userController.genTocken(result.username))
                 res.render('succ', {    //使用ejs模板，render方法回自动去找目录
                     data: JSON.stringify({
                         username:result['username'],
@@ -85,6 +97,25 @@ class UserController {
             })
         }
     }
+
+//     issignin(req,res,next){
+//         res.set('Content-Type', 'application/json;charset=utf-8');//设置响应格式
+//         if(req.session.username){
+//             res.render('succ', {    //使用ejs模板，render方法回自动去找目录
+//                 data: JSON.stringify({
+//                     isSignin:true,
+//                     username:req.session.username
+//                 })
+//             })
+//         }else{
+//             console.log(0)
+//             res.render('fail', {    //使用ejs模板，render方法回自动去找目录
+//                 data: JSON.stringify({
+//                     isSignin:false
+//                 })
+//             })
+//         }
+//     }
 }
 
 
