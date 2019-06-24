@@ -15,8 +15,7 @@ const oAuth = (req, res, next) => {
                     isSignin: false
                 })
             })           
-        } else {
-            
+        } else {            
             next()
             res.render('succ', {
                 data: JSON.stringify({

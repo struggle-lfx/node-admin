@@ -7,6 +7,7 @@ const router = new SMERouter('router-view')  //定义路由应该写到什么地
 
 router.route('/', indexController.render)
 router.route('/goodslist', goodslistController.render)
+router.route('/goodsadd', goodslistController.add)
 //重定向
 router.route('*', (req, res, next) => {
   res.redirect('/')
