@@ -26,11 +26,11 @@ class UserController {
     }
 
     genTocken(username){
-        var privatekey = fs.readFileSync(path.resolve(__dirname,'../keys/private.key') )
-        var token = jwt.sign({username},privatekey,{ algorithm: 'RS256'})
-        return token
-        // let cert = 'i love you'
-        // return jwt.sign({username},cert)
+        // var privatekey = fs.readFileSync(path.resolve(__dirname,'../keys/private.key') )
+        // var token = jwt.sign({username},privatekey,{ algorithm: 'RS256'})
+        // return token
+        let cert = 'i love you'
+        return jwt.sign({username},cert)
     }
 
     //用户注册

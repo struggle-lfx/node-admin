@@ -1,32 +1,53 @@
-import userTpl from '../views/users.html'
+import userTpl from '../views/users.html';
+import _oAuth from '../util/oAuth'
 
 class Users {
     constructor() {
         //第一次进入系统时，做一次认证
-        this._oAuth()
+        this._init()
+        // this._oAuth()
     }
 
     //第一次进入时，判断是否登录
-    _oAuth() {
-        $.ajax({
-            url: '/api/users/issignin',
-            headers: {
-                'X-Access-Token': localStorage.getItem('token')
-            },
-            dataType: 'json',
-            success: (result) => {
-                this._renderUser({
-                    isSignin: result.data.isSignin,
-                    username: result.data.username
-                })
-            },
-            error: (err) => {
-                this._renderUser({
-                    isSignin: false
-                })
-            }
-        })
+    // _oAuth() {
+    //     $.ajax({
+    //         url: '/api/users/issignin',
+    //         headers: {
+    //             'X-Access-Token': localStorage.getItem('token')
+    //         },
+    //         dataType: 'json',
+    //         success: (result) => {
+    //             this._renderUser({
+    //                 isSignin: result.data.isSignin,
+    //                 username: result.data.username
+    //             })
+    //         },
+    //         error: (err) => {
+    //             this._renderUser({
+    //                 isSignin: false
+    //             })
+    //         }
+    //     })
+    // }
+
+
+    async _init() {
+        let result = await _oAuth()
+        console.log(result)
+        if (result) {
+            this._renderUser({
+                isSignin: result.data.isSignin,
+                username: result.data.username
+            })
+        } else {
+            this._renderUser({
+                isSignin:false
+            })
+        }
     }
+    
+
+
     _renderUser({ isSignin = false, username = '' }) {
         let template = Handlebars.compile(userTpl);
         let str = template({
@@ -41,7 +62,7 @@ class Users {
     //给user添加点击事件
     _user() {
         let that = this
-        $('.user-menu').on('click','#reset',()=>{
+        $('.user-menu').on('click', '#reset', () => {
             localStorage.removeItem('token')
             location.reload()
         })

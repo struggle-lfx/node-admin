@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/usersrouter');
+var goodsRouter = require('./routes/goodsrouter')
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(cookieSession({
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/goods', goodsRouter);
 
 
 
