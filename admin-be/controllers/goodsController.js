@@ -22,7 +22,7 @@ class GoodsController{
     
     async save(req,res,next){
         res.set('Content-Type','application/json;charset=utf-8')
-        let result = await goodsModule.save(req.body)
+        let result = await goodsModule.save({...req.body,photo:req.filename})
         if(result){
             res.render('succ', {    //使用ejs模板，render方法回自动去找目录
                 data: JSON.stringify({

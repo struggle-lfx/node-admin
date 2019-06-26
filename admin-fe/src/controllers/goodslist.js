@@ -1,7 +1,7 @@
 import goodslistTpl from '../views/goodslist.hbs'
 import oAuth from '../util/oAuth'
 import goodsaddTpl from '../views/goodsadd.hbs'
-import { type } from 'os';
+
 
 export const render=async (req, res, next)=> {
     let result = await oAuth()
@@ -41,18 +41,27 @@ function bindadd(res){
         res.back()
     })
     $('#goodssubmit').on('click',()=>{
-        $.ajax({
-            url:'/api/goods',
-            type:'POST',
+        $('#goodssave').ajaxSubmit({
+            resetForm:true,
             headers: {
                 'X-Access-Token': localStorage.getItem('token') || ''
             },
-            data:$('#goodssave').serialize(),
             success(result){
-                alert(result.data.message),
                 res.back()
             }
         })
+        // $.ajax({
+        //     url:'/api/goods',
+        //     type:'POST',
+        //     headers: {
+        //         'X-Access-Token': localStorage.getItem('token') || ''
+        //     },
+        //     data:$('#goodssave').serialize(),
+        //     success(result){
+        //         alert(result.data.message),
+        //         res.back()
+        //     }
+        // })
     })
 }
 

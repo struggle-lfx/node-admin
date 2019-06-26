@@ -3,7 +3,7 @@ const db= require('../utils/db')
 class GoodsMondel{
     constructor(){
         let GoodsSchema = {//定义字段
-            // photo:String,
+            photo:String,
             name:String,
             price:String,
             createDate:String
