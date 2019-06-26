@@ -32,6 +32,23 @@ class GoodsController{
         }
     }
 
+    async delete(req,res,next){
+        let result = await goodsModule.delete(req.body.id)
+        if(result){
+            res.render('succ',{
+                data:JSON.stringify({
+                    message:'商品删除成功'
+                })
+            })
+        }else{
+            res.render('fail',{
+                data:JSON.stringify({
+                    message:'商品删除失败'
+                })
+            })
+        }
+    }
+
 
 }
 

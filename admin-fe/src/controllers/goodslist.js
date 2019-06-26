@@ -47,7 +47,12 @@ function bindadd(res){
                 'X-Access-Token': localStorage.getItem('token') || ''
             },
             success(result){
-                res.back()
+                if(result.ret){
+                    res.back()
+                }else{
+                    alert(result.data.message)
+                }
+                
             }
         })
         // $.ajax({

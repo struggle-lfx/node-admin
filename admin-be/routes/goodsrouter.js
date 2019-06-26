@@ -8,6 +8,7 @@ router.route('/')
      .all(oAuthGoods)
     .get(goodsController.findAll)
     .post(fileUpload.fileupload,goodsController.save)
+    .delete(goodsController.delete)
 
 
 

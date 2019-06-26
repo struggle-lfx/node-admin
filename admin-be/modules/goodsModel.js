@@ -29,6 +29,10 @@ class GoodsMondel{
     findMany({page,pagesize}){
         return this.goodsMondel.find({}).skip(page*pagesize).limit(pagesize)
     }
+
+    delete(id){
+        return this.goodsMondel.findByIdAndDelete(id)
+    }
     
 }
 
