@@ -33,7 +33,6 @@ class Users {
 
     async _init() {
         let result = await _oAuth()
-        console.log(result)
         if (result) {
             this._renderUser({
                 isSignin: result.data.isSignin,

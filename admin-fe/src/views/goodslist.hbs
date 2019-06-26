@@ -20,56 +20,31 @@
       <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
           <tr>
-            <th>ID</th>
+            <th>序号</th>
             <th>图片</th>
             <th>名称</th>
             <th>价格</th>
             <th>操作</th>
           </tr>
+
+          {{#if length}}
+          {{#each data}}
           <tr>
-            <td>183</td>
-            <td><img width="50" height="50" src="http://localhost:3000/upload/{{companyLogo}}" alt=""></td>
-            <td>11-7-2014</td>
-            <td>11</td>
+            <td>{{@index}}</td>
+            {{!-- <td><img width="50" height="50" src="http://localhost:3000/upload/{{companyLogo}}" alt=""></td> --}}
+            <td>{{name}}</td>
+            <td>{{price}}</td>
             <td>
               <button class="btn btn-sm btn-primary btn-update"><span class="fa fa-edit"></span>
                 修改</button>
               <button class="btn btn-sm btn-danger btn-delete"><span class="fa fa-remove"></span> 删除</button>
             </td>
           </tr>
-          <tr>
-            <td>219</td>
-            <td>Alexander Pierce</td>
-            <td>11-7-2014</td>
-            <td>icken flank fatback doner.</td>
-            <td>
-              <button class="btn btn-sm btn-primary btn-update"><span class="fa fa-edit"></span>
-                修改</button>
-              <button class="btn btn-sm btn-danger btn-delete"><span class="fa fa-remove"></span> 删除</button>
-            </td>
-          </tr>
-          <tr>
-            <td>657</td>
-            <td>Bob Doe</td>
-            <td>11-7-2014</td>
-            <td>on chicken flank fatback doner.</td>
-            <td>
-              <button class="btn btn-sm btn-primary btn-update"><span class="fa fa-edit"></span>
-                修改</button>
-              <button class="btn btn-sm btn-danger btn-delete"><span class="fa fa-remove"></span> 删除</button>
-            </td>
-          </tr>
-          <tr>
-            <td>175</td>
-            <td>Mike Doe</td>
-            <td>11-7-2014</td>
-            <td></td>
-            <td>
-              <button class="btn btn-sm btn-primary btn-update"><span class="fa fa-edit"></span>
-                修改</button>
-              <button class="btn btn-sm btn-danger btn-delete"><span class="fa fa-remove"></span> 删除</button>
-            </td>
-          </tr>
+          {{/each}}
+          {{else}}
+          <tr> <td>暂无数据</td> </tr>
+          {{/if}}
+
         </table>
       </div>
       <!-- /.box-body -->

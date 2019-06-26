@@ -4,27 +4,27 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form class="form-horizontal" id="possave" action="/api/position" method="post" enctype="multipart/form-data">
+  <form class="form-horizontal" id="goodssave" action="/api/goods" method="post" enctype="multipart/form-data">
     <div class="box-body">
       <div class="form-group">
-        <label for="companyLogo" class="col-sm-2 control-label">图片</label>
+        <label for="photo" class="col-sm-2 control-label">图片</label>
 
         <div class="col-sm-10">
-          <input type="file" class="form-control" name="companyLogo" id="companyLogo" placeholder="请选择公司logo图片">
+          <input type="file" class="form-control" name="photo" id="companyLogo" placeholder="请选择图片">
         </div>
       </div>
       <div class="form-group">
-        <label for="companyName" class="col-sm-2 control-label">名称</label>
+        <label for="name" class="col-sm-2 control-label">商品名称</label>
 
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="companyName" id="companyName" placeholder="请输入公司名称">
+          <input type="text" class="form-control" name="name" id="companyName" placeholder="请输入商品名称">
         </div>
       </div>
       <div class="form-group">
-        <label for="positionName" class="col-sm-2 control-label">价格</label>
+        <label for="price" class="col-sm-2 control-label">价格</label>
 
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="positionName" id="positionName" placeholder="请输入职位名称">
+          <input type="text" class="form-control" name="price" id="positionName" placeholder="请输入价格">
         </div>
       </div>
 
@@ -32,8 +32,8 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-      <button type="button" id="posback" class="btn btn-default">返回</button>
-      <button type="button" id="possubmit" class="btn btn-info pull-right">提交</button>
+      <button type="button" id="goodsback" class="btn btn-default">返回</button>
+      <button type="button" id="goodssubmit" class="btn btn-info pull-right">提交</button>
     </div>
     <!-- /.box-footer -->
   </form>
